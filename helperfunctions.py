@@ -14,6 +14,11 @@ def WhitelistUser(user):
 
         with open("../whitelist.json") as fp:
             listObj = json.load(fp)
+
+        for idx, user in enumerate(listObj):
+            if newUser.name.lower() == user["name"].lower():
+                return False
+
         listObj.append({
             "uuid" : f"{newUser.uuid}",
             "name" : f"{newUser.name}"
@@ -26,3 +31,19 @@ def WhitelistUser(user):
         return True
     else:
         return False
+
+def RemoveWhitelist(user):
+        removedUser = user
+
+        with open("../whitelist.json") as fp:
+            listObj = json.load(fp)
+        for idx, user in enumerate(listObj):
+            if removedUser.lower() == user["name"].lower():
+                listObj.pop(idx)
+                with open("../whitelist.json", "w") as json_file:
+                    json.dump(listObj, json_file,
+                              indent=4,
+                              separators=(',', ': '))
+                return True
+        return False
+
