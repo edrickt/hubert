@@ -32,6 +32,9 @@ async def on_message(message):
         return
 
     if content == "!!status":
-        GetServerStatus()
+        server = GetServerStatus()
+        embed = discord.Embed(title=server.motd, description="Server status")
+        embed.add_field(name="Number online: ", value=server.playersonline, inline=False)
+        embed.add_field(name="Latency: ", value=server.latency, inline=False)
 
 client.run(TOKEN)

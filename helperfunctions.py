@@ -58,10 +58,9 @@ class Server():
     def __init__(self, connection):
         self.playersonline = connection.status().players.online
         self.latency = connection.status().latency
-        self.playerslist = connection.query().players.names
+        self.motd = connection.query().motd
 
 def GetServerStatus():
-    connection = JavaServer.lookup("localhost:25565")
+    connection = JavaServer.lookup("192.168.1.42:25565")
     server = Server(connection)
-    print(server)
     return server
