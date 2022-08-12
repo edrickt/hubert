@@ -35,7 +35,6 @@ async def on_message(message):
         server = GetServerStatus()
         embedMsg = discord.Embed(title=server.motd)
         embedMsg.add_field(name="Number online: ", value=server.playersonline, inline=False)
-        embedMsg.add_field(name="Latency: ", value=server.latency, inline=true)
         await message.channel.send(embed=embedMsg)
 
 client.run(TOKEN)
