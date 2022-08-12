@@ -1,10 +1,17 @@
 import requests
 import json
+from mcstatus import JavaServer
 
 class User:
     def __init__(self, data):
-        User.uuid = data["id"]
-        User.name = data["name"]
+        self.uuid = data["id"]
+        self.name = data["name"]
+
+class Server:
+    def __init__(self, server):
+        self.playersonline = server.status.players.online
+        self.ping = server.status.latency
+
 
 def WhitelistUser(user):
     request = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{user}?at=<timestamp>")
@@ -47,3 +54,14 @@ def RemoveWhitelist(user):
                 return True
         return False
 
+class Server():
+    def __init__(self, connection):
+        self.playersonline = connection.status().players.online
+        self.latency = connection.status().latency
+        self.playerslist = connection.query()
+
+def GetServerStatus():
+    connection = JavaServer.lookup("yessirskiii.duckdns.org:25565")
+    server = Server(connection)
+    print(server.playerslist)
+    return server

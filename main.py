@@ -31,4 +31,7 @@ async def on_message(message):
             await message.channel.send("User not found")
         return
 
+    if content == "!!status":
+        GetServerStatus()
+
 client.run(TOKEN)
