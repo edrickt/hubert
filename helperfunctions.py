@@ -61,6 +61,6 @@ class Server():
         self.motd = connection.query().motd
 
 def GetServerStatus():
-    connection = JavaServer.lookup("localhost:25565")
+    connection = JavaServer.lookup("192.168.1.42:25565")
     server = Server(connection)
     return server
