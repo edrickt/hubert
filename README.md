@@ -5,5 +5,8 @@ Simple Discord bot that checks Minecraft server status, as well as whilelist and
 
 ## Usage
 !!whitelist add <user> -- Whitelist user to server
+  
 !!whitelist remove <user> -- Remove user from whitelist
+  
 !!status -- Return information about server
+  
