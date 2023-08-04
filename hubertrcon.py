@@ -1,4 +1,4 @@
-from rcon.source import Client
+from rcon.source import rcon
 
 class HubertRCON:
     def __init__(self, ip, port, password):
@@ -6,7 +6,6 @@ class HubertRCON:
         self.port = port
         self.password = password
 
-    def run(self, command, *args):
-        with Client(self.ip, self.port, passwd=self.password) as client:
-            response = client.run(command, *args)
-            return response
+    async def run(self, command, *args):        
+        response = await rcon(command, *args, host=self.ip, port=self.port, passwd=self.password)
+        return response
