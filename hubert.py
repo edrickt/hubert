@@ -20,11 +20,11 @@ async def on_message(message):
             command = content[1]
             action = content[2]
             if action == "add":
-                response = hr.run(f"{command} {action} {content[3]}")
+                response = await hr.run(f"{command} {action} {content[3]}")
             elif action == "remove":
-                response = hr.run(f"{command} {action} {content[3]}")
+                response = await hr.run(f"{command} {action} {content[3]}")
             elif action == "list":
-                response = hr.run(f"{command} {action}")
+                response = await hr.run(f"{command} {action}")
             print(response)
             await message.channel.send(f"{response}")
 
